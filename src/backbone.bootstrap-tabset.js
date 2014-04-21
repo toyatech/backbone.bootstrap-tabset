@@ -61,12 +61,13 @@
       $tabsContent.empty();
 
       _.each(tabs, function(tab) {
-        var $tab = $tabs.append(options.tabTemplate(tab));
-        var $tabContentContainer = $tabsContent.append(options.tabContentTemplate(tab));
+        var $tab = $(options.tabTemplate(tab)).appendTo($tabs);
+        var $tabContentContainer = $(options.tabContentTemplate(tab)).appendTo($tabsContent);
+        if (tab.active) { $tab.addClass('active'); $tabContentContainer.addClass('active'); }
         var content = tab.content;
         if (content && content.$el) {
           content.render();
-          $tabContentContainer.html(content.$el);
+          $tabContentContainer.append(content.$el);
         } else {
           $tab.addClass('disabled');
         }

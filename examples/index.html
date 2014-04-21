@@ -30,10 +30,13 @@
 
       var tabset1 = new Backbone.BootstrapTabset({
           tabs: [
-            { id: 'tab1', title: 'Tab1', content: tab1, active: true },
-            { id: 'tab2', title: 'Tab2', content: tab2 }
+            { id: 'tab1', title: 'Tab1', content: new tab1(), active: true },
+            { id: 'tab2', title: 'Tab2', content: new tab2() }
           ]
       }).render();
+
+      $("body").append(tabset1.$el);
+
     </script>
   </body>
 </html>
